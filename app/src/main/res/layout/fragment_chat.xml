@@ -75,10 +75,23 @@
         </TableLayout>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/chatHeaderMarginTop"
+            android:text="@string/chatHeader"
+            android:textSize="@dimen/chatHeaderTxtSize"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/chatTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:layout_marginVertical="10dp"
+            android:lineHeight="@dimen/chatTextViewLineHeight"
+            android:textColor="@color/chatTextViewColor"
+            android:textSize="@dimen/chatTextSize"
+            android:text=""
+            />
 
     </LinearLayout>
 </RelativeLayout>

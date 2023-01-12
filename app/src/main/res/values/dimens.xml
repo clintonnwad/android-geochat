@@ -6,4 +6,8 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="generateBtnWidth">194dp</dimen>
     <dimen name="stopServiceBtnWidth">182dp</dimen>
+    <dimen name="chatHeaderTxtSize">17sp</dimen>
+    <dimen name="chatHeaderMarginTop">30dp</dimen>
+    <dimen name="chatTextViewLineHeight">20dp</dimen>
+    <dimen name="chatTextSize">17sp</dimen>
 </resources>
