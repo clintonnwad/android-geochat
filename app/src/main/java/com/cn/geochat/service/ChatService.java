@@ -100,10 +100,11 @@ public class ChatService extends Service {
             notificationDecorator.displaySimpleNotification("New message...: "+ testUser, testMessage, 0);
         } else if( command == CMD_GENERATE_MESSAGE ){
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
+            String userName = (String) data.get(KEY_USER_NAME);
 
-            notificationDecorator.displaySimpleNotification("Hello Clinton", messageText, 0);
+            notificationDecorator.displaySimpleNotification("Hello " + userName, messageText, 0);
             notificationDecorator.displaySimpleNotification("How are you?", messageText, 1);
-            notificationDecorator.displaySimpleNotification("Good Bye Clinton!", messageText, 2);
+            notificationDecorator.displaySimpleNotification("Good Bye " + userName + "!", messageText, 2);
         } else if( command == CMD_STOP_SERVICE ){
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
 

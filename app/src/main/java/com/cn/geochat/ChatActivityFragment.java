@@ -135,6 +135,13 @@ public class ChatActivityFragment extends Fragment {
     private void generateOnMessage(){
         Bundle data = new Bundle();
         data.putInt(ChatService.MSG_CMD, ChatService.CMD_GENERATE_MESSAGE);
+
+        // Get the username value from shared preferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String userName = prefs.getString(Constants.KEY_USER_NAME, "User Name");
+
+        data.putString(Constants.KEY_USER_NAME, userName);
+
         Intent intent = new Intent(getContext(), ChatService.class);
         intent.putExtras(data);
         getActivity().startService(intent);
