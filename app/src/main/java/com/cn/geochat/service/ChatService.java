@@ -1,4 +1,4 @@
-package com.zv.geochat.service;
+package com.cn.geochat.service;
 
 import android.app.NotificationManager;
 import android.app.Service;
@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.zv.geochat.notification.NotificationDecorator;
+import com.cn.geochat.notification.NotificationDecorator;
 
 public class ChatService extends Service {
     private static final String TAG = "ChatService";
@@ -19,6 +19,7 @@ public class ChatService extends Service {
     public static final int CMD_LEAVE_CHAT = 20;
     public static final int CMD_SEND_MESSAGE = 30;
     public static final int CMD_RECEIVE_MESSAGE = 40;
+    public static final int CMD_GENERATE_MESSAGE = 50;
     public static final String KEY_MESSAGE_TEXT = "message_text";
     public static final String KEY_USER_NAME = "user_name";
 
@@ -91,7 +92,11 @@ public class ChatService extends Service {
             stopSelf();
         } else if (command == CMD_SEND_MESSAGE) {
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
-            notificationDecorator.displaySimpleNotification("Sending message...", messageText);
+             notificationDecorator.displaySimpleNotification("Sending message...", messageText);
+
+//            notificationDecorator.displaySimpleNotification("Hello Clinton", messageText);
+//            notificationDecorator.displaySimpleNotification("How are you?", messageText);
+//            notificationDecorator.displaySimpleNotification("Good Bye Clinton!", messageText);
         } else if (command == CMD_RECEIVE_MESSAGE) {
             String testUser = "User2";
             String testMessage = "Simulated Message";

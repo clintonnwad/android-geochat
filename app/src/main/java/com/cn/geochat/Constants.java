@@ -1,4 +1,4 @@
-package com.zv.geochat;
+package com.cn.geochat;
 
 public interface Constants {
     String KEY_USER_NAME ="user_name";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zv.geochat">
+    package="com.cn.geochat">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -27,11 +27,11 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zv.geochat.MainActivity" />
+                android:value="com.cn.geochat.MainActivity" />
         </activity>
 
         <service
-            android:name=".service.ChatService"
+            android:name="com.cn.geochat.service.ChatService"
             android:enabled="true"
             android:exported="true"></service>
     </application>

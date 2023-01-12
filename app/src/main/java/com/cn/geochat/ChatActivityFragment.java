@@ -1,4 +1,4 @@
-package com.zv.geochat;
+package com.cn.geochat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.zv.geochat.service.ChatService;
+import com.cn.geochat.service.ChatService;
 
 public class ChatActivityFragment extends Fragment {
     private static final String TAG = "ChatActivityFragment";
