@@ -113,7 +113,7 @@ public class ChatService extends Service {
         } else if( command == CMD_STOP_SERVICE ){
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
 
-            notificationDecorator.displaySimpleNotification("ChatBot Stopped: " + 301291242, messageText, 0);
+            notificationDecorator.displaySimpleNotification("ChatBot Stopped: " + 42, messageText, 0);
         }
 
         else {
