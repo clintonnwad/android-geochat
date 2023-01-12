@@ -56,6 +56,26 @@ public class ChatActivityFragment extends Fragment {
             }
         });
 
+        Button btnGenerateMessage = (Button) v.findViewById(R.id.btnGenerateMessage);
+        btnGenerateMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Message generated. Slide Control Area to view!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                generateOnMessage();
+            }
+        });
+
+        Button btnStopService = (Button) v.findViewById(R.id.btnStopService);
+        btnStopService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Yep. Service Stopped!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                stopService();
+            }
+        });
+
         Button btnReceiveMessage = (Button) v.findViewById(R.id.btnReceiveMessage);
         btnReceiveMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,4 +132,19 @@ public class ChatActivityFragment extends Fragment {
         getActivity().startService(intent);
     }
 
+    private void generateOnMessage(){
+        Bundle data = new Bundle();
+        data.putInt(ChatService.MSG_CMD, ChatService.CMD_GENERATE_MESSAGE);
+        Intent intent = new Intent(getContext(), ChatService.class);
+        intent.putExtras(data);
+        getActivity().startService(intent);
+    }
+
+    private void stopService(){
+        Bundle data = new Bundle();
+        data.putInt(ChatService.MSG_CMD, ChatService.CMD_STOP_SERVICE);
+        Intent intent = new Intent(getContext(), ChatService.class);
+        intent.putExtras(data);
+        getActivity().startService(intent);
+    }
 }
