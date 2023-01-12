@@ -102,9 +102,14 @@ public class ChatService extends Service {
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
             String userName = (String) data.get(KEY_USER_NAME);
 
+            // Send notification
             notificationDecorator.displaySimpleNotification("Hello " + userName, messageText, 0);
             notificationDecorator.displaySimpleNotification("How are you?", messageText, 1);
             notificationDecorator.displaySimpleNotification("Good Bye " + userName + "!", messageText, 2);
+
+            // Send broadcast
+            sendBroadcast("Hello " + userName + "\nHow are you? \nGood Bye " + userName + "!");
+
         } else if( command == CMD_STOP_SERVICE ){
             String messageText = (String) data.get(KEY_MESSAGE_TEXT);
 
@@ -115,4 +120,11 @@ public class ChatService extends Service {
             Log.w(TAG, "Ignoring Unknown Command! id=" + command);
         }
     }
+
+    private void sendBroadcast(String message) {
+        Intent intent = new Intent("com.cn.geochat.MESSAGE_BROADCAST");
+        intent.putExtra("message", message);
+        sendBroadcast(intent);
+    }
+
 }

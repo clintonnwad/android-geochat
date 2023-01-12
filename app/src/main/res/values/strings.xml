@@ -2,4 +2,6 @@
     <string name="app_name">GeoChat</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="stopServiceBtnText">Stop Service</string>
+    <string name="generateMessageBtnText">Generate Message</string>
 </resources>

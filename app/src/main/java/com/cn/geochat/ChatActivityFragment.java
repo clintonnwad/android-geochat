@@ -1,6 +1,9 @@
 package com.cn.geochat;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.cn.geochat.service.ChatService;
 
@@ -18,6 +22,20 @@ public class ChatActivityFragment extends Fragment {
     private static final String TAG = "ChatActivityFragment";
     EditText edtMessage;
     String userName = "user1";
+
+    private TextView chatTextView;
+
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("com.cn.geochat.MESSAGE_BROADCAST")) {
+                String message = intent.getStringExtra("message");
+                chatTextView.setText(message);
+            }
+        }
+    };
+
+
     public ChatActivityFragment() {
     }
 
@@ -60,7 +78,7 @@ public class ChatActivityFragment extends Fragment {
         btnGenerateMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Message generated. Slide Control Area to view!", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Message generated", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 generateOnMessage();
             }
@@ -89,6 +107,14 @@ public class ChatActivityFragment extends Fragment {
         edtMessage = (EditText) v.findViewById(R.id.edtMessage);
 
         loadUserNameFromPreferences();
+
+
+
+        // For broadcast
+        chatTextView = v.findViewById(R.id.chatTextView);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.cn.geochat.MESSAGE_BROADCAST");
+        requireActivity().registerReceiver(mBroadcastReceiver, filter);
 
         return v;
     }
@@ -154,4 +180,5 @@ public class ChatActivityFragment extends Fragment {
         intent.putExtras(data);
         getActivity().startService(intent);
     }
+
 }

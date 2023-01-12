@@ -46,21 +46,39 @@
             android:id="@+id/btnSendMessage" />
 
         <Button
-            android:text="Simulate Receive Message"
+            android:id="@+id/btnReceiveMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnReceiveMessage" />
+            android:text="Simulate Receive Message" />
 
-        <Button
-            android:text="Generate Message"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnGenerateMessage" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:text="Stop Service"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnGenerateMessage"
+                    android:layout_width="@dimen/generateBtnWidth"
+                    android:layout_height="wrap_content"
+                    android:text="@string/generateMessageBtnText" />
+
+                <Button
+                    android:id="@+id/btnStopService"
+                    android:layout_width="@dimen/stopServiceBtnWidth"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stopServiceBtnText" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/chatTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnStopService" />
+            android:text="" />
+
     </LinearLayout>
 </RelativeLayout>
