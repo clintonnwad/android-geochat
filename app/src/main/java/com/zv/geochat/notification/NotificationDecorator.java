@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import com.zv.geochat.ChatActivity;
 import com.zv.geochat.R;
@@ -63,9 +64,11 @@ public class NotificationDecorator {
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                     intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            // notification message
             try {
+                RemoteViews remoteViews = new RemoteViews("com.zv.geochat", R.layout.notification_custom_layout);
 
+                remoteViews.setTextViewText(R.id.title,title);
+                remoteViews.setTextViewText(R.id.content,contentText);
 
                 Notification noti = new Notification.Builder(context)
                         .setSmallIcon(R.drawable.ic_message)
@@ -73,6 +76,7 @@ public class NotificationDecorator {
                         .setContentText(contentText)
                         .setContentIntent(contentIntent)
                         .setAutoCancel(true)
+                        .setCustomContentView(remoteViews)
                         .setSound(messageNotifierConfig.getSoundUri())
                         .setVibrate(messageNotifierConfig.getVibratePattern())
                         .setLights(Color.BLUE, 1000, 1000)
